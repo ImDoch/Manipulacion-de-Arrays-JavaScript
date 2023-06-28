@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodo map</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+
+    <script>
+        //Tenemos una lista de productos, la mejor forma de renderizarlos, es tranformarlos en cadenas de texto con etiquetas HTML para eso usamos el metodo map()
+        const products = [
+            {
+                title: 'Burger',
+                price: 121
+            },
+            {
+                title: 'Pizza',
+                price: 20
+            }
+        ]
+
+        //Seleccionamos el div donde queremos que se renderice
+        const app = document.querySelector('#app');
+
+        //Ahora haremos el renderizado mediante el metodo map()
+        //Aqui estamos transformando los elementos de products, en un array con etiquetas HTML que luego rederizaremos
+        const elementList = products.map(product => `<li>${product.title} - ${product.price}</li>`);
+        
+        //Renderizando los elementos -> Para esto debemos usar el metodo join() que convierte un array en string, esto debido a que la propiedad innerHTML recibe un string
+        app.innerHTML = elementList.join('');
+
+    </script>
+</body>
+</html>

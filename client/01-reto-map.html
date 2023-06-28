@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto tareas con map</title>
+</head>
+<body>
+    <!-- El reto consiste en renderizar una lista de tareas en el docuemtno HTML, usando un checkbox para saber si la tarea está completada o no, esto usando el metodo forEach() -->
+    <div id="app">
+
+    </div>
+
+    <script>
+        //Div donde se renderizarán las tareas
+        const app = document.querySelector('#app');
+
+        //Array de tareas
+        const tasks = [
+            {
+                title: 'Programar',
+                description: 'Lorem ipsum dolor sit amet.',
+                done: false
+            },
+            {
+                title: 'Estudiar',
+                description: 'Lorem ipsum dolor sit amet.',
+                done: true
+            },
+            {
+                title: 'Lavar',
+                description: 'Lorem ipsum dolor sit amet.',
+                done: true
+            },
+            {
+                title: 'Cocinar',
+                description: 'Lorem ipsum dolor sit amet.',
+                done: false
+            }
+        ]
+
+        //Creando los elementos para ser renderizados
+        const elements = tasks.map(task => {
+            return `
+                <div>
+                    <label for="${task.title}"> ${task.title} </label>
+                    <input class="check" type="checkbox" id="${task.title}" name="${task.title}" ${task.done && "checked"}>
+                    <br>
+                    <p>${task.description}</p>
+                </div>
+            `
+        })
+
+        //Renderizando elementos
+        app.innerHTML = elements.join('');
+ 
+        //Cambiando el valor de la propiedad 'done' de la tarea segun el estado del checkbox
+        tasks.forEach(task => {
+            const check = document.getElementById(`${task.title}`)
+            check.addEventListener('click', () => {
+                if(check.checked) {
+                    task.done = true;
+                } else {
+                    task.done = false;
+                }
+            })
+        })
+    </script>
+</body>
+</html>

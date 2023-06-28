@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metodo forEach</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+
+    <script>
+        //Notemos que tenemos un array de productos, queremos iterarlo para renderizar esta informacion en nuestro documento HTML
+        const products = [
+            {
+                title: 'Burger',
+                price: 121
+            },
+            {
+                title: 'Pizza',
+                price: 20
+            }
+        ]
+        
+        products.forEach(product => console.log(product))
+
+        //Seleccionamos el div donde queremos que se renderice
+        const app = document.querySelector('#app');
+
+        //Ahora haremos el renderizado mediante el metodo forEach()
+        products.forEach(product => {
+            //Le incrustaremos HTML al div, como se agregarán varios elementos se usa el operador +=
+            app.innerHTML += `
+                <li>${product.title} - ${product.price}</li>
+            `  
+        });
+
+    </script>
+</body>
+</html>
